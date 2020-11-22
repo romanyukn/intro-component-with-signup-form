@@ -5,7 +5,13 @@ const button = document.getElementById("button");
 function generate() {
   const formValue = [];
   formArray.map((el) => {
-    formValue.push(el.value);
+    if (el.value === "") {
+      el.className = "form-control is-invalid";
+    } else {
+      el.className = "form-control";
+      formValue.push(el.value);
+      el.value = "";
+    }
   });
   return formValue;
 }
