@@ -24,6 +24,6 @@ button.addEventListener("click", (e) => {
 formArray.forEach((el) =>
   el.addEventListener("change", (el) => {
     console.log(el);
-    el.className = "form-control";
+    el.target.className = "form-control";
   })
 );
