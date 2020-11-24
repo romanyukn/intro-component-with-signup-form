@@ -1,4 +1,20 @@
 body {
-  background: rgba (251, 159, 159, 0.3);
+  background: hsl(0, 100%, 74%, 0.9);
   background-image: url("./images/bg-intro-desktop.png");
+  font-family: "Poppins", sans-serif;
+}
+
+.container {
+  color: white;
+}
+
+.form-control {
+  padding: 0.5rem;
+}
+
+.frame {
+  background: white;
+  padding: 1rem;
+  margin: 1rem;
+  align-self: stretch;
 }

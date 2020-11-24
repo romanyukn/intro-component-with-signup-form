@@ -22,8 +22,7 @@ button.addEventListener("click", (e) => {
 });
 
 formArray.forEach((el) =>
-  el.addEventListener("change", (el) => {
-    console.log(el);
+  el.addEventListener("keydown", (el) => {
     el.target.className = "form-control";
   })
 );
