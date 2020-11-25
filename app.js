@@ -7,6 +7,7 @@ function validateLoginForm() {
   formArray.map((el) => {
     if (el.value === "") {
       el.className = "form-control is-invalid";
+      console.log(el.parentNode.childNodes.querySelector("invalid-feedback"));
     } else {
       el.className = "form-control";
       formValue.push(el.value);
