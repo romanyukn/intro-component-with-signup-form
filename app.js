@@ -1,25 +1,18 @@
 const form = document.getElementsByTagName("input");
 const formArray = Array.from(form);
 const button = document.getElementById("button");
+const emailCheck = /^\S+@\S+\.\S+$/
 
 function validateLoginForm() {
-  const formValue = [];
-  formArray.map((el) => {
-    if (el.value === "") {
-      el.className = "form-control is-invalid";
-      console.log(el.parentNode.childNodes.querySelector("invalid-feedback"));
-    } else {
-      el.className = "form-control";
-      formValue.push(el.value);
-      el.value = "";
-    }
+ const result = formArray.map((el) => {
+    return validateError(el);
   });
-  return formValue;
+  return result.every((el) => el == true);
 }
 
 button.addEventListener("click", (e) => {
   e.preventDefault();
-  console.log(validateLoginForm());
+  handleSubmit();
 });
 
 formArray.forEach((el) =>
@@ -27,3 +20,32 @@ formArray.forEach((el) =>
     el.target.className = "form-control";
   })
 );
+
+function validateError(el) {
+  if (el.value === "") {
+    el.className = "form-control is-invalid";
+    return false
+  };
+  if(el.placeholder === "Email Address") return validateEmail(el);
+  return true;
+}
+
+function validateEmail(email) {
+  if (!emailCheck.test(email.value)) {
+    email.className = "form-control is-invalid";
+    return false;
+  }
+  return true;
+}
+
+function cleanForm() {
+  formArray.forEach((el) => el.value = "");
+}
+
+function handleSubmit() {
+  if (validateLoginForm()) {
+    cleanForm();
+  }
+}
+
+// console.log(el.parentNode.querySelector(".invalid-feedback"));
